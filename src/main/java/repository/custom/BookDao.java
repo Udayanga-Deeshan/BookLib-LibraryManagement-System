@@ -1,4 +1,8 @@
 package repository.custom;
 
-public interface BookDao {
+import dto.Book;
+import entity.BookEntity;
+import repository.CRUDRepository;
+
+public interface BookDao  extends CRUDRepository<BookEntity, String > {
 }

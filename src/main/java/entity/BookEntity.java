@@ -1,4 +1,4 @@
-package dto;
+package entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Book {
+public class BookEntity {
 
     private String BookId;
 
