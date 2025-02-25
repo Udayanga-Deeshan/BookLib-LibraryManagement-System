@@ -21,5 +21,7 @@ public class BookEntity {
 
     private String genre;
 
+    private  String availability;
+
 
 }

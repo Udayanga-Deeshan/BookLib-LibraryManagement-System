@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -14,8 +15,8 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a2c73" height="66.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
         <TextField fx:id="txtBookId" layoutX="12.0" layoutY="82.0" promptText="BookID" />
         <TextField fx:id="txtTitle" layoutX="337.0" layoutY="82.0" promptText="Title" />
-        <TextField fx:id="txtAuthor" layoutX="147.0" layoutY="124.0" promptText="Author" />
-        <TextField fx:id="txtGenre" layoutX="305.0" layoutY="124.0" promptText="Genre" />
+        <TextField fx:id="txtAuthor" layoutX="93.0" layoutY="124.0" promptText="Author" />
+        <TextField fx:id="txtGenre" layoutX="268.0" layoutY="124.0" promptText="Genre" />
         <Button layoutX="167.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnAddBookAction" prefHeight="25.0" prefWidth="59.0" text="Add" />
         <TableView fx:id="tbBooks" layoutX="54.0" layoutY="206.0" prefHeight="145.0" prefWidth="493.0">
             <columns>
@@ -33,7 +34,8 @@
         <Button layoutX="236.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnSearchBookAction" prefHeight="25.0" prefWidth="59.0" text="Search" />
         <Button layoutX="305.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnUpdateCustomerAction" prefHeight="25.0" prefWidth="59.0" text="Update" />
         <Button layoutX="374.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnDeleteCustomerAction" prefHeight="25.0" prefWidth="59.0" text="Delete" />
-        <Button layoutX="488.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnReloadBooksAction" prefHeight="25.0" prefWidth="59.0" text="Reload" />
+        <Button layoutX="426.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnReloadBooksAction" prefHeight="25.0" prefWidth="121.0" text="View All Books" />
       <TextField fx:id="txtISBN" layoutX="171.0" layoutY="80.0" promptText="ISBN" />
+      <JFXComboBox fx:id="cmbAvailability" layoutX="438.0" layoutY="124.0" promptText="Availability Status" />
     </children>
 </AnchorPane>

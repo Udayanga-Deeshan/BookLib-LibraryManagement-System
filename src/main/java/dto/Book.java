@@ -21,5 +21,7 @@ public class Book {
 
     private String genre;
 
+    private String availability;
+
 
 }
