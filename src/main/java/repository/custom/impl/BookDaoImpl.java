@@ -6,9 +6,8 @@ import entity.BookEntity;
 import repository.CRUDRepository;
 import repository.custom.BookDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookDaoImpl  implements BookDao {
@@ -47,7 +46,30 @@ public class BookDaoImpl  implements BookDao {
 
     @Override
     public List<BookEntity> getAll() {
-        return List.of();
+        String SQL = "SELECT * FROM book";
+        List<BookEntity> bookEntityList = new ArrayList<>();
+        try {
+          Connection connection=  DBConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL);
+            while (resultSet.next()){
+               bookEntityList.add(new BookEntity(
+                       resultSet.getString(1),
+                       resultSet.getString(2),
+                       resultSet.getString(3),
+                       resultSet.getString(4),
+                       resultSet.getString(5),
+                       resultSet.getString(6)
+               )) ;
+
+
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bookEntityList;
     }
 
     @Override

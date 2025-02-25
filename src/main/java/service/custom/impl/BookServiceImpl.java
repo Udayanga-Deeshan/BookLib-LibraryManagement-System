@@ -9,6 +9,7 @@ import repository.custom.BookDao;
 import service.custom.BookService;
 import util.DaoType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookServiceImpl implements BookService {
@@ -37,7 +38,15 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAll() {
-        return List.of();
+        List<BookEntity> bookEntityList = dto.getAll();
+        ArrayList<Book> books = new ArrayList<>();
+        for (BookEntity bookEntity: bookEntityList){
+            books.add(new ModelMapper().map(bookEntity,Book.class));
+        }
+
+        return  books;
+
+
     }
 
     @Override

@@ -12,32 +12,36 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import service.ServiceFactory;
 import service.SuperService;
 import service.custom.BookService;
 import util.ServiceType;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class BookManagementFormController implements Initializable {
 
     public TextField txtBookId;
     public JFXComboBox cmbAvailability;
+    public TableView tblBooks;
+    public TableColumn colBookID;
     @FXML
-    private TableColumn<?, ?> colAuthor;
+    private TableColumn colAuthor;
 
     @FXML
-    private TableColumn<?, ?> colGenre;
+    private TableColumn colGenre;
 
     @FXML
-    private TableColumn<?, ?> colISBN;
+    private TableColumn colISBN;
 
     @FXML
-    private TableColumn<?, ?> colTitle;
+    private TableColumn colTitle;
 
     @FXML
-    private TableView<?> tbBooks;
+    private TableView tbBooks;
 
     @FXML
     private TextField txtAuthor;
@@ -90,7 +94,17 @@ public class BookManagementFormController implements Initializable {
 
     @FXML
     void btnReloadBooksAction(ActionEvent event) {
-
+        colBookID.setCellValueFactory(new PropertyValueFactory<>("BookId"));
+        colISBN.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
+        colGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        List<Book> bookList = service.getAll();
+        ObservableList<Book> bookObservableList = FXCollections.observableArrayList();
+        bookList.forEach(book -> {
+            bookObservableList.add(book);
+        });
+        tblBooks.setItems(bookObservableList);
     }
 
     @FXML
