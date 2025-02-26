@@ -73,7 +73,24 @@ public class BookDaoImpl  implements BookDao {
     }
 
     @Override
-    public BookEntity search(String s) {
-        return null;
+    public BookEntity search(String id) {
+        String SQL ="SELECT * FROM book WHERE BookId='"+id+"'";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL);
+            resultSet.next();
+           return new BookEntity(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+            );
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

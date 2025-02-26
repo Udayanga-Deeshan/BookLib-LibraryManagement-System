@@ -9,9 +9,10 @@ import service.custom.impl.BookServiceImpl;
 public class AppModule extends AbstractModule {
 
     @Override
-    public  void configure(){
+    protected   void configure(){
         bind(BookService.class).to(BookServiceImpl.class);
         bind(BookDao.class).to(BookDaoImpl.class);
+
     }
 
 }

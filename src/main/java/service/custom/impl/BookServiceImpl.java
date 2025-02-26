@@ -1,11 +1,12 @@
 package service.custom.impl;
 
-import com.google.inject.Inject;
 import dto.Book;
 import entity.BookEntity;
+import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
 import repository.custom.BookDao;
+import repository.custom.impl.BookDaoImpl;
 import service.custom.BookService;
 import util.DaoType;
 
@@ -14,8 +15,8 @@ import java.util.List;
 
 public class BookServiceImpl implements BookService {
 
-    @Inject
-    BookDao dto;
+
+    BookDao dto= new BookDaoImpl();
     @Override
     public boolean addBook(Book book) {
         System.out.println("service  "+book);
@@ -33,7 +34,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book searchBook(String id) {
+        BookEntity searchedBook = dto.search(id);
+        if(searchedBook!=null){
+            return new ModelMapper().map(searchedBook, Book.class);
+        }
+
         return null;
+
     }
 
     @Override
