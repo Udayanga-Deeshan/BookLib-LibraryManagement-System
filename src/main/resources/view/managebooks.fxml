@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="587.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageBooksFormController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a2c73" height="70.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="727.0" />
+        <TextField fx:id="txtTitle" layoutX="241.0" layoutY="176.0" prefHeight="38.0" prefWidth="215.0" promptText="Title" />
+        <TextField fx:id="txtAuthor" layoutX="242.0" layoutY="294.0" prefHeight="38.0" prefWidth="215.0" promptText="Author" />
+        <TextField fx:id="txtGenre" layoutX="240.0" layoutY="233.0" prefHeight="38.0" prefWidth="215.0" promptText="Genre" />
+        <Label layoutX="254.0" layoutY="9.0" prefHeight="45.0" prefWidth="248.0" text="Manage Books" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtISBN" layoutX="240.0" layoutY="118.0" prefHeight="38.0" prefWidth="215.0" promptText="ISBN" />
+      <JFXTextField fx:id="txtBookId" layoutX="543.0" layoutY="88.0" onAction="#txtIDOnAction" promptText="Search Book" />
+      <JFXButton layoutX="189.0" layoutY="447.0" onAction="#btnUpdateBookOnAction" prefHeight="45.0" prefWidth="164.0" style="-fx-background-color: #2ecc71;" text="Update" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="467.0" layoutY="440.0" onAction="#btnDeleteBookONAction" prefHeight="45.0" prefWidth="154.0" style="-fx-background-color: #e74c3c;" text="Remove" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtAvailability" layoutX="232.0" layoutY="364.0" prefHeight="38.0" prefWidth="215.0" promptText="Availability" />
+      <Label layoutX="116.0" layoutY="129.0" text="ISBN:" />
+    </children>
+</AnchorPane>

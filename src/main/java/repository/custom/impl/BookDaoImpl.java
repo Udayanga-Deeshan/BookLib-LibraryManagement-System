@@ -36,7 +36,20 @@ public class BookDaoImpl  implements BookDao {
 
     @Override
     public boolean update(BookEntity entity) {
-        return false;
+        String SQL="UPDATE BOOK SET ISBN=? , title=? ,author=? , genre=? WHERE bookId=?";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,entity.getISBN());
+            preparedStatement.setObject(2,entity.getTitle());
+            preparedStatement.setObject(3,entity.getAuthor());
+            preparedStatement.setObject(4,entity.getGenre());
+            preparedStatement.setObject(5,entity.getBookId());
+            return preparedStatement.executeUpdate() >0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

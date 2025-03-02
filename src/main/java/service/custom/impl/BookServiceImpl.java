@@ -29,7 +29,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public boolean updateBook(Book book) {
-        return false;
+        BookEntity bookEntity = new ModelMapper().map(book, BookEntity.class);
+       return dto.save(bookEntity);
     }
 
     @Override

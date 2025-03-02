@@ -13,16 +13,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import service.ServiceFactory;
-import service.SuperService;
 import service.custom.BookService;
-import util.ServiceType;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class BookManagementFormController implements Initializable {
+public class AddBookFormController implements Initializable {
 
     public TextField txtBookId;
     public JFXComboBox cmbAvailability;

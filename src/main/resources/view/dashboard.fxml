@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="506.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+<AnchorPane prefHeight="506.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1d2c" height="506.0" stroke="BLACK" strokeType="INSIDE" width="204.0" />
       <Button layoutX="25.0" layoutY="66.0" mnemonicParsing="false" onAction="#btnSearchBookOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Search Book" textFill="#eeeeee">
