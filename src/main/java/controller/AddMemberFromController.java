@@ -11,7 +11,7 @@ import service.custom.MemberService;
 
 import java.time.LocalDate;
 
-public class MemberManagementFromController {
+public class AddMemberFromController {
 
     @FXML
     private DatePicker DataMembership;

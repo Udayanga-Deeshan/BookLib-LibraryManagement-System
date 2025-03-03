@@ -14,7 +14,12 @@
          </font>
       </Button>
       <AnchorPane fx:id="loadContent" layoutX="204.0" layoutY="-1.0" prefHeight="506.0" prefWidth="587.0" />
-      <Button layoutX="25.0" layoutY="136.0" mnemonicParsing="false" onAction="#btnManageMembersOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Manage Members" textFill="#eeeeee">
+      <Button layoutX="25.0" layoutY="136.0" mnemonicParsing="false" onAction="#btnAddMemberOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Add Member" textFill="#eeeeee">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="25.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnManageMembersOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Manage Members" textFill="#eeeeee">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>

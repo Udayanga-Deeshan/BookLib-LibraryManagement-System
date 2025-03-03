@@ -10,10 +10,10 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberManagementFromController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddMemberFromController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e3961" height="72.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <Label layoutX="202.0" layoutY="16.0" text="Manage Members" textFill="WHITE">
+      <Label layoutX="202.0" layoutY="16.0" text="Create Member" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
