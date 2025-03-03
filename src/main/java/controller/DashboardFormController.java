@@ -31,4 +31,11 @@ public class DashboardFormController {
 
     }
 
+    public void btnManageMembersOnAction(ActionEvent actionEvent) throws IOException {
+        Injector injector = Guice.createInjector(new AppModule());
+        FXMLLoader loader  = new FXMLLoader(this.getClass().getResource("/view/managemembers.fxml "));
+        loader.setControllerFactory(injector::getInstance);
+        this.loadContent.getChildren().clear();
+        this.loadContent.getChildren().add(loader.load());
+    }
 }
