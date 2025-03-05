@@ -5,9 +5,8 @@ import entity.MemberEntity;
 import repository.custom.MemberDao;
 import util.MembershipStatus;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDaoImpl implements MemberDao {
@@ -42,7 +41,27 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public List<MemberEntity> getAll() {
-        return List.of();
+        List<MemberEntity> memberEntityList = new ArrayList<>();
+        String SQL="SELECT * FROM member";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL);
+            while (resultSet.next()){
+               MemberEntity entity= new MemberEntity(
+                     resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getDate(5).toLocalDate()
+                );
+                memberEntityList.add(entity);
+            }
+
+            return  memberEntityList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import repository.custom.MemberDao;
 import service.custom.MemberService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberServiceImpl implements MemberService {
@@ -31,6 +32,12 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<Member> getAll() {
-        return List.of();
+        List<MemberEntity> all = dao.getAll();
+        List<Member> memberList = new ArrayList<>();
+        for(MemberEntity member: all){
+            memberList.add(new ModelMapper().map(member,Member.class));
+        }
+
+        return  memberList;
     }
 }

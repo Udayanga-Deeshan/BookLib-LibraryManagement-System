@@ -26,4 +26,6 @@ public class Member {
     private LocalDate membershipDate;
 
 
+
+
 }

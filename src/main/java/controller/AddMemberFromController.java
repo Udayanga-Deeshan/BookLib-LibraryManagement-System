@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import service.custom.MemberService;
+import util.MembershipStatus;
 
 import java.time.LocalDate;
 
@@ -38,6 +39,7 @@ public class AddMemberFromController {
         String email = txtEmail.getText();
         String contactNumber = txtContactNO.getText();
         LocalDate date = DataMembership.getValue();
+
 
         Member member = new Member(MemberId,name,email,contactNumber,date);
         System.out.println(member);
