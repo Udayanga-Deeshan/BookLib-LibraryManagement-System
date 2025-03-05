@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import util.MembershipStatus;
 
 import java.time.LocalDate;
 
@@ -23,6 +24,8 @@ public class MemberEntity {
     private  String contactNumber;
 
     private LocalDate membershipDate;
+
+
 
 
 }

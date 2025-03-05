@@ -22,12 +22,15 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean updateMember(Member member) {
-        return false;
+
+     return   dao.update(new ModelMapper().map(member,MemberEntity.class));
     }
 
     @Override
     public Member searchMember(String id) {
-        return null;
+        MemberEntity search = dao.search(id);
+        return new ModelMapper().map(search, Member.class);
+
     }
 
     @Override

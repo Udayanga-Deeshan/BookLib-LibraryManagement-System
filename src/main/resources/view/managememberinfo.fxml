@@ -22,15 +22,16 @@
       <Label layoutX="150.0" layoutY="149.0" text="Email:" />
       <Label layoutX="87.0" layoutY="198.0" text="Contact Number:" />
       <Label layoutX="451.0" layoutY="149.0" text="Membership Date:" />
-      <Label layoutX="447.0" layoutY="198.0" text="Membership Status:" />
       <TextField fx:id="txtMemberName" layoutX="197.0" layoutY="98.0" prefHeight="25.0" prefWidth="218.0" />
       <TextField fx:id="txtEmail" layoutX="197.0" layoutY="145.0" prefHeight="25.0" prefWidth="218.0" />
       <TextField fx:id="txtPhoneNumber" layoutX="197.0" layoutY="194.0" prefHeight="25.0" prefWidth="218.0" />
-      <TextField fx:id="txtMembershipDate" layoutX="565.0" layoutY="145.0" prefHeight="25.0" prefWidth="218.0" />
-      <TextField fx:id="txtMembershipStatus" layoutX="565.0" layoutY="194.0" prefHeight="25.0" prefWidth="218.0" />
+      <TextField fx:id="txtMembershipDate" disable="true" layoutX="565.0" layoutY="145.0" prefHeight="25.0" prefWidth="218.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
       <Button layoutX="207.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnUpdateMemberOnAction" prefHeight="25.0" prefWidth="75.0" text="Update" />
       <Button layoutX="314.0" layoutY="245.0" mnemonicParsing="false" onAction="#btnDeleteMemberOnAction" prefHeight="25.0" prefWidth="69.0" text="Delete" />
-      <JFXTextField layoutX="640.0" layoutY="66.0" onAction="#txtSearchMemberOnAction" promptText="Search Member" />
+      <JFXTextField fx:id="txtSerachMember" layoutX="640.0" layoutY="66.0" onAction="#txtSearchMemberOnAction" promptText="Search Member" />
       <TableView fx:id="tblMembers" layoutX="178.0" layoutY="284.0" prefHeight="200.0" prefWidth="585.0">
         <columns>
           <TableColumn fx:id="colMemberId" prefWidth="75.0" text="Member ID" />

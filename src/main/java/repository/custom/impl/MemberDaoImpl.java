@@ -31,7 +31,20 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public boolean update(MemberEntity entity) {
-        return false;
+        String SQL="UPDATE member SET name=?, email=?,phone_number=?,membership_date=? WHERE member_id=? ";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,entity.getName());
+            preparedStatement.setObject(2,entity.getEmail());
+            preparedStatement.setObject(3,entity.getContactNumber());
+            preparedStatement.setObject(4,entity.getMembershipDate());
+            preparedStatement.setObject(5,entity.getMemberId());
+            return preparedStatement.executeUpdate() >0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -54,6 +67,7 @@ public class MemberDaoImpl implements MemberDao {
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getDate(5).toLocalDate()
+
                 );
                 memberEntityList.add(entity);
             }
@@ -65,7 +79,23 @@ public class MemberDaoImpl implements MemberDao {
     }
 
     @Override
-    public MemberEntity search(String s) {
-        return null;
+    public MemberEntity search(String id) {
+         String SQL= "SELECT * FROM member WHERE member_id='"+id+"'";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL);
+            resultSet.next();
+           return new MemberEntity(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getDate(5).toLocalDate()
+
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
