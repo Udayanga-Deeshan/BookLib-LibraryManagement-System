@@ -14,7 +14,7 @@ public class Starter extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Injector injector = Guice.createInjector(new AppModule());
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/registerform.fxml"));
         fxmlLoader.setControllerFactory(injector::getInstance);
         stage.setScene(new Scene(fxmlLoader.load()));
         stage.show();
