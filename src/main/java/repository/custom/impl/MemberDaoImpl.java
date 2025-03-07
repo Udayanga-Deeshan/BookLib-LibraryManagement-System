@@ -2,6 +2,8 @@ package repository.custom.impl;
 
 import db.DBConnection;
 import entity.MemberEntity;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import repository.custom.MemberDao;
 import util.MembershipStatus;
 
@@ -97,5 +99,16 @@ public class MemberDaoImpl implements MemberDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public ObservableList<String> getMemberIds() {
+        ObservableList<String> memberIdList = FXCollections.observableArrayList();
+        List<MemberEntity> all = getAll();
+        for(MemberEntity memberEntity:all){
+            memberIdList.add(memberEntity.getMemberId());
+        }
+
+        return memberIdList;
     }
 }

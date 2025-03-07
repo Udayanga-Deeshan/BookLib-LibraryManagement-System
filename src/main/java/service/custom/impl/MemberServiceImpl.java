@@ -3,6 +3,7 @@ package service.custom.impl;
 import com.google.inject.Inject;
 import dto.Member;
 import entity.MemberEntity;
+import javafx.collections.ObservableList;
 import org.modelmapper.ModelMapper;
 import repository.custom.MemberDao;
 import service.custom.MemberService;
@@ -43,4 +44,18 @@ public class MemberServiceImpl implements MemberService {
 
         return  memberList;
     }
+
+    @Override
+    public ObservableList<String> getMemberIds() {
+       return dao.getMemberIds();
+    }
+
+    @Override
+    public Member searchMemberData(String id) {
+        MemberEntity memberEntity = dao.search(id);
+        return new ModelMapper().map(memberEntity, Member.class);
+
+    }
+
+
 }

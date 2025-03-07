@@ -1,6 +1,7 @@
 package service.custom;
 
 import dto.Book;
+import javafx.collections.ObservableList;
 import service.SuperService;
 
 import java.util.List;
@@ -16,5 +17,7 @@ public interface BookService extends SuperService {
     List<Book> getAll();
 
     boolean deleteBook(String id);
+
+    ObservableList<String> getBookIds();
 
 }

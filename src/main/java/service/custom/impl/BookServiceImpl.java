@@ -3,6 +3,7 @@ package service.custom.impl;
 import dto.Book;
 import entity.BookEntity;
 import jakarta.inject.Inject;
+import javafx.collections.ObservableList;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
 import repository.custom.BookDao;
@@ -60,5 +61,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public boolean deleteBook(String id) {
         return false;
+    }
+
+    @Override
+    public ObservableList<String> getBookIds() {
+        return dto.getBookCodes();
+
     }
 }

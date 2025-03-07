@@ -3,6 +3,8 @@ package repository.custom.impl;
 import db.DBConnection;
 import dto.Book;
 import entity.BookEntity;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import repository.CRUDRepository;
 import repository.custom.BookDao;
 
@@ -105,5 +107,17 @@ public class BookDaoImpl  implements BookDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    @Override
+    public ObservableList<String> getBookCodes(){
+        ObservableList<String> bookIdList = FXCollections.observableArrayList();
+        List<BookEntity>bookEntityList=getAll();
+        for(BookEntity bookEntity:bookEntityList){
+            bookIdList.add(bookEntity.getBookId());
+        }
+
+        return  bookIdList;
     }
 }
