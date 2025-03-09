@@ -3,6 +3,7 @@ package controller;
 import com.google.inject.Inject;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import dto.Book;
 import dto.Member;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -99,6 +100,20 @@ public class BorrowFormController implements Initializable {
 
                     }
         });
+
+        cmbBookCode.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->{
+            if(newValue !=null){
+                System.out.println("book cmb"+newValue);
+                searchBookData(newValue.toString());
+            }
+        } );
+    }
+
+    private void searchBookData(String id) {
+        Book book = bookService.searchBook(id);
+        txtTitle.setText(book.getTitle());
+        txtAuthor.setText(book.getAuthor());
+        txtGenre.setText(book.getGenre());
     }
 
     private void  loadBookIDs(){
