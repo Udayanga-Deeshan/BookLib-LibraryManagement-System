@@ -1,4 +1,4 @@
-package dto;
+package entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,15 +11,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Cart {
+public class BorrowDetailsEntity {
 
-    private  String bookCode;
+    private String borrowID;
 
-    private String title;
+    private String bookId;
 
-    private LocalDate borrowDate;
+    private LocalDate borrowedDate;
 
-    private LocalDate  dueDate;
-
-
+    private  LocalDate returnDate;
 }

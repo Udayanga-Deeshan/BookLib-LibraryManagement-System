@@ -37,7 +37,7 @@
                 <TableColumn fx:id="colBookCode" prefWidth="90.0" text="Book Code" />
                 <TableColumn fx:id="colTitle" prefWidth="110.0" text="Title" />
                 <TableColumn fx:id="colBorrowDate" prefWidth="115.0" text="Borrow Date" />
-                <TableColumn fx:id="colReturnDate" prefWidth="176.0" text="Return Date" />
+                <TableColumn fx:id="colDueDate" prefWidth="176.0" text="Due Date" />
             </columns>
         </TableView>
         <Label layoutX="154.0" layoutY="9.0" text="Order Management" textFill="WHITE">
@@ -62,7 +62,7 @@
                 <Font name="System Bold Italic" size="15.0" />
             </font>
         </Button>
-      <DatePicker layoutX="38.0" layoutY="172.0" promptText="Borrow Date" />
-      <DatePicker layoutX="242.0" layoutY="172.0" promptText="Return Date" />
+      <DatePicker fx:id="date_BorrowDate" layoutX="38.0" layoutY="172.0" promptText="Borrow Date" />
+      <DatePicker fx:id="date_DueDate" layoutX="242.0" layoutY="172.0" promptText="Return Date" />
     </children>
 </AnchorPane>

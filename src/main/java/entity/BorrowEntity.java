@@ -1,5 +1,6 @@
-package dto;
+package entity;
 
+import dto.BorrowDetails;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Borrow {
+public class BorrowEntity {
     private String orderId;
 
     private String  memberId;
@@ -24,7 +25,7 @@ public class Borrow {
 
     private LocalDate dueDate;
 
-  //  private LocalDate returnDate;
+    //private LocalDate returnDate;
 
     private BorrowStatus borrowStatus;
 
