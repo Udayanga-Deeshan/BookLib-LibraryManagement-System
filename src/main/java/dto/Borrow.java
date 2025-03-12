@@ -18,7 +18,7 @@ public class Borrow {
 
     private String  memberId;
 
-    private String bookId;
+
 
     private LocalDate borrowDate;
 

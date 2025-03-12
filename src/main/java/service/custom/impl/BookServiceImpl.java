@@ -1,15 +1,14 @@
 package service.custom.impl;
 
 import dto.Book;
+import dto.BorrowDetails;
 import entity.BookEntity;
-import jakarta.inject.Inject;
+import entity.BorrowDetailsEntity;
 import javafx.collections.ObservableList;
 import org.modelmapper.ModelMapper;
-import repository.DaoFactory;
 import repository.custom.BookDao;
 import repository.custom.impl.BookDaoImpl;
 import service.custom.BookService;
-import util.DaoType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +16,13 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
 
-    BookDao dto= new BookDaoImpl();
+    BookDao dao = new BookDaoImpl();
     @Override
     public boolean addBook(Book book) {
         System.out.println("service  "+book);
         BookEntity bookEntity = new ModelMapper().map(book, BookEntity.class);
 
-       return dto.save(bookEntity);
+       return dao.save(bookEntity);
 
 
     }
@@ -31,12 +30,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public boolean updateBook(Book book) {
         BookEntity bookEntity = new ModelMapper().map(book, BookEntity.class);
-       return dto.update(bookEntity);
+       return dao.update(bookEntity);
     }
 
     @Override
     public Book searchBook(String id) {
-        BookEntity searchedBook = dto.search(id);
+        BookEntity searchedBook = dao.search(id);
         if(searchedBook!=null){
             return new ModelMapper().map(searchedBook, Book.class);
         }
@@ -47,7 +46,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAll() {
-        List<BookEntity> bookEntityList = dto.getAll();
+        List<BookEntity> bookEntityList = dao.getAll();
         ArrayList<Book> books = new ArrayList<>();
         for (BookEntity bookEntity: bookEntityList){
             books.add(new ModelMapper().map(bookEntity,Book.class));
@@ -65,8 +64,29 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public ObservableList<String> getBookIds() {
-        return dto.getBookCodes();
+        return dao.getBookCodes();
 
+    }
+
+    public  boolean updateAvailability(List<BorrowDetails> borrowDetails){
+        List<BorrowDetailsEntity> borrowDetailsEntities = new ArrayList<>();
+        for(BorrowDetails borrowDetail: borrowDetails){
+            BorrowDetailsEntity entity = new ModelMapper().map(borrowDetail, BorrowDetailsEntity.class);
+            borrowDetailsEntities.add(entity);
+            boolean isUpdateAvailability = updateAvailability(borrowDetail);
+            if(!isUpdateAvailability){
+                return  false;
+            }
+        }
+
+        return  true;
+    }
+
+    public  boolean updateAvailability(BorrowDetails borrowDetail){
+
+        BorrowDetailsEntity map = new ModelMapper().map(borrowDetail, BorrowDetailsEntity.class);
+
+        return  dao.updateAvailability(map);
     }
 
 

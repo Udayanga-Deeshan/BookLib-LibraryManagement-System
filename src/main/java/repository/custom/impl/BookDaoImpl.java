@@ -2,11 +2,15 @@ package repository.custom.impl;
 
 import db.DBConnection;
 import dto.Book;
+import dto.BorrowDetails;
 import entity.BookEntity;
+import entity.BorrowDetailsEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import repository.CRUDRepository;
 import repository.custom.BookDao;
+import util.BookAvailabilityStatus;
+import util.BorrowStatus;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -120,4 +124,20 @@ public class BookDaoImpl  implements BookDao {
 
         return  bookIdList;
     }
+
+    @Override
+    public boolean updateAvailability(BorrowDetailsEntity borrowDetails) {
+        String SQL="UPDATE book SET availability =?  WHERE bookId=?";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1, BookAvailabilityStatus.NOT_AVAILABLE.name());
+            preparedStatement.setObject(2,borrowDetails.getBookId());
+            return preparedStatement.executeUpdate() >0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

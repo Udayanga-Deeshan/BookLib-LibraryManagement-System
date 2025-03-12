@@ -15,6 +15,7 @@ import service.custom.BookService;
 import service.custom.BorrowDetailService;
 import service.custom.BorrowService;
 import service.custom.MemberService;
+import util.BookAvailabilityStatus;
 import util.BorrowStatus;
 
 import java.net.URL;
@@ -31,6 +32,7 @@ public class BorrowFormController implements Initializable {
 
     public DatePicker date_DueDate;
     public TableColumn colDueDate;
+    public TextField txtAvailability;
 
 
     @FXML
@@ -100,13 +102,20 @@ public class BorrowFormController implements Initializable {
         Cart cart = new Cart(bookId, title, borrowDate, dueDate);
         System.out.println(cart);
 
+        if(txtAvailability.getText().toUpperCase().equals(BookAvailabilityStatus.AVAILABLE.name())){
 
-        if(cartItems.size() <3){
-            cartItems.add(cart);
-            addToCartTable();
+            if(cartItems.size() <3){
+                cartItems.add(cart);
+                addToCartTable();
+            }else {
+                new Alert(Alert.AlertType.WARNING,"borrow limit exceeded").show();
+            }
+
         }else {
-            new Alert(Alert.AlertType.WARNING,"borrow limit exceeded").show();
+            new Alert(Alert.AlertType.WARNING,"This Book is Not available in this moment").show();
         }
+
+
 
 
 
@@ -148,7 +157,6 @@ public class BorrowFormController implements Initializable {
                 new Borrow(
                         txtOrderId.getText(),
                         cmbMemberId.getValue().toString(),
-                        cmbBookCode.getValue().toString(),
                         date_BorrowDate.getValue(),
                         date_DueDate.getValue(),
                         BorrowStatus.BORROWED,
@@ -190,6 +198,8 @@ public class BorrowFormController implements Initializable {
         txtTitle.setText(book.getTitle());
         txtAuthor.setText(book.getAuthor());
         txtGenre.setText(book.getGenre());
+        txtAvailability.setText(book.getAvailability());
+
     }
 
     private void  loadBookIDs(){
