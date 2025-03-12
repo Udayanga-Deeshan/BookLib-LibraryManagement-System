@@ -99,12 +99,14 @@ public class BorrowFormController implements Initializable {
         LocalDate borrowDate = date_BorrowDate.getValue();
         LocalDate dueDate = date_DueDate.getValue();
 
-        Cart cart = new Cart(bookId, title, borrowDate, dueDate);
-        System.out.println(cart);
+
+
 
         if(txtAvailability.getText().toUpperCase().equals(BookAvailabilityStatus.AVAILABLE.name())){
 
             if(cartItems.size() <3){
+                Cart cart = new Cart(bookId, title, borrowDate, dueDate);
+                System.out.println(cart);
                 cartItems.add(cart);
                 addToCartTable();
             }else {
@@ -153,7 +155,7 @@ public class BorrowFormController implements Initializable {
                     )
             );
         });
-        boolean b = borrowService.borrowBooks(
+        boolean isBorrowed = borrowService.borrowBooks(
                 new Borrow(
                         txtOrderId.getText(),
                         cmbMemberId.getValue().toString(),
@@ -164,11 +166,26 @@ public class BorrowFormController implements Initializable {
                 )
         );
 
-        System.out.println(b);
+        if(isBorrowed){
+            new Alert(Alert.AlertType.CONFIRMATION,"The Book(s) have been sucessfully Borrowed").show();
+            clearData();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Cannot Borrow these Books").show();
+        }
 
 
 
 
+    }
+
+    private  void clearData(){
+        txtOrderId.clear();
+        txtName.clear();
+        txtEmail.clear();
+        txtTitle.clear();
+        txtAuthor.clear();
+        txtGenre.clear();
+        txtAvailability.clear();
     }
 
     @Override

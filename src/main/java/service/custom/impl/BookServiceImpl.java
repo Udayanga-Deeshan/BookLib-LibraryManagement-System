@@ -73,7 +73,7 @@ public class BookServiceImpl implements BookService {
         for(BorrowDetails borrowDetail: borrowDetails){
             BorrowDetailsEntity entity = new ModelMapper().map(borrowDetail, BorrowDetailsEntity.class);
             borrowDetailsEntities.add(entity);
-            boolean isUpdateAvailability = updateAvailability(borrowDetail);
+            boolean isUpdateAvailability = updateAvailability(entity);
             if(!isUpdateAvailability){
                 return  false;
             }
@@ -82,11 +82,11 @@ public class BookServiceImpl implements BookService {
         return  true;
     }
 
-    public  boolean updateAvailability(BorrowDetails borrowDetail){
+    public  boolean updateAvailability(BorrowDetailsEntity borrowDetail){
 
-        BorrowDetailsEntity map = new ModelMapper().map(borrowDetail, BorrowDetailsEntity.class);
+      //  BorrowDetailsEntity map = new ModelMapper().map(borrowDetail, BorrowDetailsEntity.class);
 
-        return  dao.updateAvailability(map);
+        return  dao.updateAvailability(borrowDetail);
     }
 
 

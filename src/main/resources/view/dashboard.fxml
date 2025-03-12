@@ -8,23 +8,28 @@
 <AnchorPane prefHeight="506.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1d2c" height="579.0" stroke="BLACK" strokeType="INSIDE" width="204.0" />
-      <Button layoutX="25.0" layoutY="66.0" mnemonicParsing="false" onAction="#btnSearchBookOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Search Book" textFill="#eeeeee">
+      <Button layoutX="25.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnSearchBookOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Search Book" textFill="#eeeeee">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </Button>
       <AnchorPane fx:id="loadContent" layoutX="204.0" layoutY="-1.0" prefHeight="580.0" prefWidth="850.0" />
-      <Button layoutX="25.0" layoutY="136.0" mnemonicParsing="false" onAction="#btnAddMemberOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Add Member" textFill="#eeeeee">
+      <Button layoutX="25.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnAddMemberOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Add Member" textFill="#eeeeee">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="25.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnManageMembersOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Manage Members" textFill="#eeeeee">
+      <Button layoutX="25.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnManageMembersOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Manage Members" textFill="#eeeeee">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="25.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnBorrowBooksOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Borrow Books" textFill="#eeeeee">
+      <Button layoutX="25.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnBorrowBooksOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Borrow Books" textFill="#eeeeee">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="26.0" layoutY="63.0" mnemonicParsing="false" onAction="#btnAddBookOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="ADD Book" textFill="#eeeeee">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>

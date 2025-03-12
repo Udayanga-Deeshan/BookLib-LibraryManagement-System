@@ -54,4 +54,12 @@ public class DashboardFormController {
         this.loadContent.getChildren().clear();
         this.loadContent.getChildren().add(loader.load());
     }
+
+    public void btnAddBookOnAction(ActionEvent actionEvent) throws IOException {
+        Injector injector = Guice.createInjector(new AppModule());
+        FXMLLoader loader  = new FXMLLoader(this.getClass().getResource("/view/addbook.fxml"));
+        loader.setControllerFactory(injector::getInstance);
+        this.loadContent.getChildren().clear();
+        this.loadContent.getChildren().add(loader.load());
+    }
 }

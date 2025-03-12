@@ -14,15 +14,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import service.custom.BookService;
+import util.BookAvailabilityStatus;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddBookFormController implements Initializable {
+public class AddBookFormController {
 
     public TextField txtBookId;
-    public JFXComboBox cmbAvailability;
+
     public TableView tblBooks;
     public TableColumn colBookID;
     @FXML
@@ -61,7 +62,7 @@ public class AddBookFormController implements Initializable {
         String title = txtTitle.getText();
         String author = txtAuthor.getText();
         String genre = txtGenre.getText();
-        String availability = cmbAvailability.getValue().toString();
+        String availability = BookAvailabilityStatus.AVAILABLE.toString();
 
 
         Book book = new Book(bookId, isbn, title, author, genre,availability);
@@ -79,6 +80,7 @@ public class AddBookFormController implements Initializable {
     public  void clearData(){
         txtBookId.clear();
         txtISBN.clear();
+        txtTitle.clear();
         txtAuthor.clear();
         txtGenre.clear();
 
@@ -114,15 +116,8 @@ public class AddBookFormController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadAvailabilityStatus();
-    }
 
-    private void loadAvailabilityStatus(){
-        ObservableList<String> availabilityStatus = FXCollections.observableArrayList();
-        availabilityStatus.add("Available");
-        availabilityStatus.add("Not Available");
-        cmbAvailability.setItems(availabilityStatus);
-    }
+
+
+
 }
