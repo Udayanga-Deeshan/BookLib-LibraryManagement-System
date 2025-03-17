@@ -33,5 +33,6 @@
       </JFXButton>
       <TextField fx:id="txtAvailability" layoutX="232.0" layoutY="364.0" prefHeight="38.0" prefWidth="215.0" promptText="Availability" />
       <Label layoutX="116.0" layoutY="129.0" text="ISBN:" />
+      <JFXButton layoutX="64.0" layoutY="518.0" onAction="#btnGetBookReportOnAction" text="Get Book Report" />
     </children>
 </AnchorPane>

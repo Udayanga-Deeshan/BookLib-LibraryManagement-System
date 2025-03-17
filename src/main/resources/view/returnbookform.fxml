@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReturnBookFormController">
+    <children>
+        <!-- Borrow ID Input Field -->
+        <JFXTextField fx:id="txtBorrowId" layoutX="50.0" layoutY="30.0" prefWidth="200.0" promptText="Enter Borrow ID" />
+        <JFXButton fx:id="btnSearch" layoutX="270.0" layoutY="30.0" onAction="#btnSearchBorrowedBooksOnAction" text="Search" />
+
+        <!-- "Select All" Checkbox -->
+        <CheckBox fx:id="chkSelectAll" layoutX="50.0" layoutY="70.0" text="Select All" />
+
+        <!-- ListView for borrowed books with checkboxes -->
+        <ListView fx:id="listViewBorrowedBooks" layoutX="50.0" layoutY="100.0" prefHeight="180.0" prefWidth="500.0" />
+
+        <!-- Return Books Button -->
+        <JFXButton disable="true" layoutX="200.0" layoutY="300.0" onAction="#btnReturnBooksOnAction" text="Return Selected Books" />
+
+        <!-- Status Message -->
+        <Label fx:id="lblStatus" layoutX="180.0" layoutY="350.0" style="-fx-text-fill: green;" text="" />
+    </children>
+</AnchorPane>

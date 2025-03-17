@@ -1,12 +1,19 @@
 package controller;
 
 import com.google.inject.Inject;
+import db.DBConnection;
 import dto.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import service.custom.BookService;
+
+import java.sql.SQLException;
 
 public class ManageBooksFormController {
 
@@ -65,5 +72,17 @@ public class ManageBooksFormController {
     }
 
     public void btnDeleteBookONAction(ActionEvent actionEvent) {
+    }
+
+    public void btnGetBookReportOnAction(ActionEvent actionEvent) throws SQLException {
+        try {
+            JasperDesign load = JRXmlLoader.load("src/main/resources/reports/Books.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

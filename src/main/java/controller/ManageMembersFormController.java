@@ -2,6 +2,7 @@ package controller;
 
 import com.google.inject.Inject;
 import com.jfoenix.controls.JFXTextField;
+import db.DBConnection;
 import dto.Member;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,9 +13,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import service.custom.MemberService;
 import util.MembershipStatus;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -104,5 +110,18 @@ public class ManageMembersFormController {
            memberObservableList.add(member);
        }
         tblMembers.setItems(memberObservableList);
+    }
+
+    public void btnGetAllMembersOnAction(ActionEvent actionEvent) throws SQLException {
+        try {
+            JasperDesign load = JRXmlLoader.load("src/main/resources/reports/Member.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
