@@ -2,27 +2,41 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReturnBookFormController">
+<AnchorPane prefHeight="467.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReturnBookFormController">
     <children>
         <!-- Borrow ID Input Field -->
-        <JFXTextField fx:id="txtBorrowId" layoutX="50.0" layoutY="30.0" prefWidth="200.0" promptText="Enter Borrow ID" />
-        <JFXButton fx:id="btnSearch" layoutX="270.0" layoutY="30.0" onAction="#btnSearchBorrowedBooksOnAction" text="Search" />
-
-        <!-- "Select All" Checkbox -->
-        <CheckBox fx:id="chkSelectAll" layoutX="50.0" layoutY="70.0" text="Select All" />
-
-        <!-- ListView for borrowed books with checkboxes -->
-        <ListView fx:id="listViewBorrowedBooks" layoutX="50.0" layoutY="100.0" prefHeight="180.0" prefWidth="500.0" />
+        <JFXTextField fx:id="txtBorrowId" layoutX="50.0" layoutY="49.0" prefWidth="200.0" promptText="Enter Borrow ID" />
+        <JFXButton fx:id="btnSearch" layoutX="270.0" layoutY="51.0" onAction="#btnSearchBorrowedBooksOnAction" text="Search" />
 
         <!-- Return Books Button -->
-        <JFXButton disable="true" layoutX="200.0" layoutY="300.0" onAction="#btnReturnBooksOnAction" text="Return Selected Books" />
+        <JFXButton disable="true" layoutX="603.0" layoutY="394.0" onAction="#btnReturnBooksOnAction" prefHeight="38.0" prefWidth="135.0" style="-fx-background-color: #27ae60;" text="Return Selected Books" />
 
         <!-- Status Message -->
-        <Label fx:id="lblStatus" layoutX="180.0" layoutY="350.0" style="-fx-text-fill: green;" text="" />
+        <Label fx:id="lblStatus" layoutX="180.0" layoutY="351.0" style="-fx-text-fill: green;" text="" />
+      <ComboBox fx:id="cmbBorrowedBooks" layoutX="58.0" layoutY="170.0" prefWidth="150.0" />
+      <JFXTextField fx:id="txtBorrowedDate" layoutX="313.0" layoutY="164.0" promptText="Borrow Date" />
+      <DatePicker fx:id="dateReturnDate" layoutX="516.0" layoutY="165.0" />
+      <JFXTextField fx:id="txtMemberId" layoutX="62.0" layoutY="85.0" promptText="Member Id" />
+      <Label layoutX="82.0" layoutY="140.0" text="Borrowed Books">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="312.0" layoutY="10.0" text="Return Books">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="576.0" layoutY="135.0" text="Return Date">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

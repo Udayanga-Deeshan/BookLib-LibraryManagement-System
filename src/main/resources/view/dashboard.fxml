@@ -34,5 +34,10 @@
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </Button>
+      <Button layoutX="25.0" layoutY="459.0" mnemonicParsing="false" onAction="#btnReturnBooksOnAction" prefHeight="43.0" prefWidth="155.0" style="-fx-background-color: #27ae60;" text="Return Books" textFill="#eeeeee">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

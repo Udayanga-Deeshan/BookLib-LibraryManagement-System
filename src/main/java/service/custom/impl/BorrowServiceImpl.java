@@ -16,4 +16,10 @@ public class BorrowServiceImpl implements BorrowService {
        return dao.save(new ModelMapper().map(borrow, BorrowEntity.class));
 
     }
+
+    @Override
+    public Borrow findBorrowedBooksById(String id) {
+        BorrowEntity borrowedBooksById = dao.findBorrowedBooksById(id);
+        return  new ModelMapper().map(borrowedBooksById,Borrow.class);
+    }
 }
