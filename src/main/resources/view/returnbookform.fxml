@@ -15,7 +15,7 @@
         <JFXButton fx:id="btnSearch" layoutX="270.0" layoutY="51.0" onAction="#btnSearchBorrowedBooksOnAction" text="Search" />
 
         <!-- Return Books Button -->
-        <JFXButton disable="true" layoutX="603.0" layoutY="394.0" onAction="#btnReturnBooksOnAction" prefHeight="38.0" prefWidth="135.0" style="-fx-background-color: #27ae60;" text="Return Selected Books" />
+        <JFXButton layoutX="603.0" layoutY="394.0" onAction="#btnReturnBooksOnAction" prefHeight="38.0" prefWidth="135.0" style="-fx-background-color: #27ae60;" text="Return Selected Books" />
 
         <!-- Status Message -->
         <Label fx:id="lblStatus" layoutX="180.0" layoutY="351.0" style="-fx-text-fill: green;" text="" />

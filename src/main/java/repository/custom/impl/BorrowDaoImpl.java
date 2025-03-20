@@ -117,4 +117,18 @@ public class BorrowDaoImpl implements BorrowDao {
 
 
     }
+
+    @Override
+    public boolean updateStatusToReturned(String borrowId) {
+        String query = "UPDATE borrowing_records SET status = ? WHERE borrow_id = ?";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,BorrowStatus.RETURNED.name());
+            preparedStatement.setString(2,borrowId);
+            return preparedStatement.executeUpdate() >0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

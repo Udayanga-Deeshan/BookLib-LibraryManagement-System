@@ -139,5 +139,20 @@ public class BookDaoImpl  implements BookDao {
         }
     }
 
+    @Override
+    public boolean updateAvailability(String bookId, String availability) {
+        String Sql="UPDATE book SET availability =? WHERE bookId=?";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(Sql);
+            preparedStatement.setObject(1,availability);
+            preparedStatement.setObject(2,bookId);
+           return preparedStatement.executeUpdate() >0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

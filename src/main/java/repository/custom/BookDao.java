@@ -11,4 +11,6 @@ public interface BookDao  extends CRUDRepository<BookEntity, String > {
     ObservableList<String> getBookCodes();
 
     boolean updateAvailability(BorrowDetailsEntity borrowDetails);
+
+    boolean updateAvailability(String bookId,String availability);
 }
