@@ -60,6 +60,7 @@ public class ReturnBookFormController {
 
         if(isReturned){
             new Alert(Alert.AlertType.INFORMATION,"Book Returned Successfully").show();
+            clearFormData();
         }else {
             new Alert(Alert.AlertType.ERROR,"Failed to return book").show();
         }
@@ -92,6 +93,13 @@ public class ReturnBookFormController {
 
 
 
+    }
+
+    private  void clearFormData(){
+        txtBorrowId.clear();
+        txtMemberId.clear();
+        txtBorrowedDate.clear();
+        cmbBorrowedBooks.getItems().clear();
     }
 
 }

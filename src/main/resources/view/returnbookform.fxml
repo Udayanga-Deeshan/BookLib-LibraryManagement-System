@@ -12,7 +12,7 @@
     <children>
         <!-- Borrow ID Input Field -->
         <JFXTextField fx:id="txtBorrowId" layoutX="50.0" layoutY="49.0" prefWidth="200.0" promptText="Enter Borrow ID" />
-        <JFXButton fx:id="btnSearch" layoutX="270.0" layoutY="51.0" onAction="#btnSearchBorrowedBooksOnAction" text="Search" />
+        <JFXButton fx:id="btnSearch" layoutX="270.0" layoutY="51.0" onAction="#btnSearchBorrowedBooksOnAction" style="-fx-background-color: #2ecc71;" text="Search" />
 
         <!-- Return Books Button -->
         <JFXButton fx:id="btnReturnBooks" layoutX="603.0" layoutY="394.0" onAction="#btnReturnBooksOnAction" prefHeight="38.0" prefWidth="135.0" style="-fx-background-color: #27ae60;" text="Return Selected Books" />
