@@ -10,10 +10,7 @@ import service.custom.impl.BookServiceImpl;
 import util.BorrowStatus;
 import util.MembershipStatus;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,5 +127,24 @@ public class BorrowDaoImpl implements BorrowDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String getBorrowingStatus(String borrowId) {
+        String SQL="SELECT status FROM borrowing_records WHERE borrow_id = ?";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1,borrowId);
+
+            ResultSet resultSet = preparedStatement.executeQuery(SQL);
+            if(resultSet.next()){
+                resultSet.getString("status");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 }

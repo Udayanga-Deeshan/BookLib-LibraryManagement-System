@@ -167,7 +167,7 @@ public class BorrowFormController implements Initializable {
         );
 
         if(isBorrowed){
-            new Alert(Alert.AlertType.CONFIRMATION,"The Book(s) have been sucessfully Borrowed").show();
+            new Alert(Alert.AlertType.CONFIRMATION,"The Book(s) have been successfully Borrowed").show();
             clearData();
         }else {
             new Alert(Alert.AlertType.ERROR,"Cannot Borrow these Books").show();

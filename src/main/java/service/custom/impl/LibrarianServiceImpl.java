@@ -30,6 +30,15 @@ public class LibrarianServiceImpl implements LibrarianService {
 
     @Override
     public Librarian searchByEmail(String email) {
-        return null;
+        LibrarianEntity librarianEntity = dao.search(email);
+
+        if(librarianEntity!=null){
+            basicTextEncryptor.setPassword(key);
+            String decryptedPassword = basicTextEncryptor.decrypt(librarianEntity.getPassword());
+            System.out.println(decryptedPassword);
+            librarianEntity.setPassword(decryptedPassword);
+            return new ModelMapper().map(librarianEntity,Librarian.class);
+        }
+        return  null;
     }
 }

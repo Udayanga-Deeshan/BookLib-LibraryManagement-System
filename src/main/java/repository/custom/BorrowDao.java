@@ -8,4 +8,6 @@ public interface BorrowDao extends CRUDRepository<BorrowEntity,String> {
     BorrowEntity findBorrowedBooksById(String id);
 
     boolean updateStatusToReturned(String borrowId);
+
+    String getBorrowingStatus(String borrowId);
 }

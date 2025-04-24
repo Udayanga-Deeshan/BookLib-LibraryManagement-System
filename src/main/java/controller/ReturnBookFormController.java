@@ -23,6 +23,7 @@ public class ReturnBookFormController {
 
     public JFXTextField txtMemberId;
     public ComboBox cmbBorrowedBooks;
+    public JFXButton btnReturnBooks;
     @FXML
     private JFXButton btnSearch;
 
@@ -55,6 +56,8 @@ public class ReturnBookFormController {
         ReturnBook returnBook = new ReturnBook(borrowID, memberId, bookID,borrowedDate, returnDate, BorrowStatus.RETURNED);
         boolean isReturned = returnBookService.returnBook(returnBook);
 
+
+
         if(isReturned){
             new Alert(Alert.AlertType.INFORMATION,"Book Returned Successfully").show();
         }else {
@@ -72,13 +75,20 @@ public class ReturnBookFormController {
 
         Borrow borrowedBooksById = borrowService.findBorrowedBooksById(txtBorrowId.getText());
         System.out.println(borrowedBooksById);
-        txtMemberId.setText(borrowedBooksById.getMemberId());
-        txtBorrowedDate.setText(borrowedBooksById.getBorrowDate().toString());
+        if(borrowedBooksById.getBorrowStatus().equals(BorrowStatus.RETURNED)){
+            new Alert(Alert.AlertType.WARNING,"books are already returned").show();
+            btnReturnBooks.setDisable(true);
 
-        List<String> bookList = borrowedBooksById.getBorrowedBooks().stream()
-                .map(BorrowDetails::getBookId).toList();
+        }else {
+            txtMemberId.setText(borrowedBooksById.getMemberId());
+            txtBorrowedDate.setText(borrowedBooksById.getBorrowDate().toString());
 
-        cmbBorrowedBooks.getItems().setAll(bookList);
+            List<String> bookList = borrowedBooksById.getBorrowedBooks().stream()
+                    .map(BorrowDetails::getBookId).toList();
+
+            cmbBorrowedBooks.getItems().setAll(bookList);
+        }
+
 
 
 

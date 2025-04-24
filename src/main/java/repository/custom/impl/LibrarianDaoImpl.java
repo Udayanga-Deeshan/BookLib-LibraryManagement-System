@@ -6,6 +6,7 @@ import repository.custom.LibrarianDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -42,6 +43,22 @@ public class LibrarianDaoImpl implements LibrarianDao {
 
     @Override
     public LibrarianEntity search(String s) {
-        return null;
+        String SQL = "SELECT *from librarian WHERE email = '" + s + "'";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            ResultSet resultSet = connection.createStatement().executeQuery(SQL);
+            if(resultSet.next()){
+                return new LibrarianEntity(
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4)
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  null;
     }
+
+
 }
