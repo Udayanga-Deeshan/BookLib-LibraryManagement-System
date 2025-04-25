@@ -54,7 +54,21 @@ public class ManageMembersFormController {
 
     @FXML
     void btnDeleteMemberOnAction(ActionEvent event) {
+        boolean isDeleted = service.deleteMember(txtSerachMember.getText());
 
+        if(isDeleted){
+            new Alert(Alert.AlertType.CONFIRMATION,"Member Deleted Successfully").show();
+            clearFormData();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Failed t delete the member").show();
+        }
+    }
+
+    private void clearFormData(){
+        txtMemberName.clear();
+        txtEmail.clear();
+        txtMembershipDate.clear();
+        txtPhoneNumber.clear();
     }
 
     @FXML
@@ -80,10 +94,17 @@ public class ManageMembersFormController {
     @FXML
     void txtSearchMemberOnAction(ActionEvent event) {
         Member member = service.searchMember(txtSerachMember.getText());
-        txtMemberName.setText(member.getName());
-        txtEmail.setText(member.getEmail());
-        txtMembershipDate.setText(member.getMembershipDate().toString());
-        txtPhoneNumber.setText(member.getContactNumber());
+
+        if(member !=null){
+            txtMemberName.setText(member.getName());
+            txtEmail.setText(member.getEmail());
+            txtMembershipDate.setText(member.getMembershipDate().toString());
+            txtPhoneNumber.setText(member.getContactNumber());
+        }else{
+            new  Alert(Alert.AlertType.WARNING,"Member Not Found").show();
+        }
+
+
 
 
 

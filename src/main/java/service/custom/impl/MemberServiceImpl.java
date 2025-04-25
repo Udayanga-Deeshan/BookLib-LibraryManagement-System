@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import dto.Member;
 import entity.MemberEntity;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import org.modelmapper.ModelMapper;
 import repository.custom.MemberDao;
 import service.custom.MemberService;
@@ -30,7 +31,11 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member searchMember(String id) {
         MemberEntity search = dao.search(id);
-        return new ModelMapper().map(search, Member.class);
+        if(search!=null){
+            return  new ModelMapper().map(search, Member.class);
+        }else{
+            return  null;
+        }
 
     }
 
@@ -53,8 +58,19 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member searchMemberData(String id) {
         MemberEntity memberEntity = dao.search(id);
-        return new ModelMapper().map(memberEntity, Member.class);
 
+        if(memberEntity!=null){
+            return  new ModelMapper().map(memberEntity, Member.class);
+        }else{
+            return  null;
+        }
+
+
+    }
+
+    @Override
+    public boolean deleteMember(String id) {
+       return dao.delete(id);
     }
 
 

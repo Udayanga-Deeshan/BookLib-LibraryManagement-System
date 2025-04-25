@@ -18,4 +18,6 @@ public interface MemberService {
    ObservableList<String> getMemberIds();
 
     Member searchMemberData(String id);
+
+    boolean deleteMember(String id);
 }

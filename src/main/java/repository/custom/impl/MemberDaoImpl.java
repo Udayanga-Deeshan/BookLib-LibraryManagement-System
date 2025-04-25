@@ -51,7 +51,14 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public boolean delete(String s) {
-        return false;
+        String SQL = "DELETE from member WHERE member_id='" + s + "'";
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(SQL) > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -87,18 +94,25 @@ public class MemberDaoImpl implements MemberDao {
             Connection connection = DBConnection.getInstance().getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
-            resultSet.next();
-           return new MemberEntity(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getDate(5).toLocalDate()
+            if(resultSet.next()){
+                return new MemberEntity(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getDate(5).toLocalDate()
 
-            );
+                );
+            }
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        return  null;
+
+
     }
 
     @Override
