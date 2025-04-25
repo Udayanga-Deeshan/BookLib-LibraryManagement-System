@@ -13,11 +13,11 @@ public class LibrarianServiceImpl implements LibrarianService {
     LibrarianDao dao;
 
     String key ="#345891AG";
-    BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
+
 
     @Override
     public boolean register(Librarian librarian) {
-
+        BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
         basicTextEncryptor.setPassword(key);
        String encryptPassword = basicTextEncryptor.encrypt(librarian.getPassword());
         librarian.setPassword(encryptPassword);
@@ -33,6 +33,7 @@ public class LibrarianServiceImpl implements LibrarianService {
         LibrarianEntity librarianEntity = dao.search(email);
 
         if(librarianEntity!=null){
+            BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
             basicTextEncryptor.setPassword(key);
             String decryptedPassword = basicTextEncryptor.decrypt(librarianEntity.getPassword());
             System.out.println(decryptedPassword);

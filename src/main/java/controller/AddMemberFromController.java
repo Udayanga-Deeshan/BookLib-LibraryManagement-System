@@ -57,6 +57,7 @@ public class AddMemberFromController {
         txtName.clear();
         txtEmail.clear();
         txtContactNO.clear();
+        DataMembership.setValue(null);
     }
 
 }

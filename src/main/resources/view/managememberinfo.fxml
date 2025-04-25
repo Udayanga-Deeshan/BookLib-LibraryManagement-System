@@ -42,6 +42,6 @@
         </columns>
       </TableView>
       <Button layoutX="629.0" layoutY="491.0" mnemonicParsing="false" onAction="#btnViewAllMembersOnAction" prefHeight="25.0" prefWidth="116.0" text="view All Members" />
-      <Button layoutX="46.0" layoutY="472.0" mnemonicParsing="false" onAction="#btnGetAllMembersOnAction" text="Get All Members" />
+      <Button layoutX="181.0" layoutY="493.0" mnemonicParsing="false" onAction="#btnGetAllMembersOnAction" text="Generate Members Report" />
    </children>
 </AnchorPane>
